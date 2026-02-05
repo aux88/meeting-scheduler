@@ -6,7 +6,7 @@ import { getLocalTimezoneOffset } from "../utils/time";
 
 type Event = {
     id: string;
-    name: string;
+    title: string;
     description: string;
     duration_minutes: number;
 };
@@ -165,7 +165,7 @@ const EventDetailPage = () => {
     return (
         <div className="container mx-auto p-4 max-w-2xl">
             <header className="mb-8">
-                <h1 className="text-3xl font-bold mb-2">{event.name}</h1>
+                <h1 className="text-3xl font-bold mb-2">{event.title}</h1>
                 <p className="text-lg text-gray-600 mb-4">{event.description}</p>
                 <p className="mb-6"><span className="font-bold">会議時間:</span> {event.duration_minutes}分</p>
             </header>
