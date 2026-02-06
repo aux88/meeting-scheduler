@@ -27,4 +27,4 @@ dist-ssr
 .env.local
 
 # ドキュメント類はpushしない
-document
+#document

@@ -9,6 +9,8 @@ import { fetchParticipants } from "../services/participantService";
 import { fetchAvailabilities } from "../services/availabilitiesService";
 import { calculateAvailableMeetingSlots, type CalculatedSlot } from "../services/calculateMeeetingSlots";
 import { ResultList } from "../components/result/ResultList";
+import { ShareLinkSection } from "../components/common/ShareLinkSection";
+import { ShareLinkItem } from "../components/common/ShareLinkItem";
 
 const ResultPage = () => {
   const { eventId } = useParams<{ eventId: string }>();
@@ -75,10 +77,14 @@ const ResultPage = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 max-w-2xl">
       <h1 className="text-3xl font-bold mb-6">"{event.title}"の回答集計結果</h1>
       <p className="mb-4">{event.description}</p>
       <p className="mb-4">所要時間: {event.duration_minutes} 分</p>
+      <ShareLinkSection>
+        <ShareLinkItem label="回答用ページ:" eventId={eventId as string}/>
+        <ShareLinkItem label="集計結果ページ:" eventId={eventId as string}/>
+      </ShareLinkSection>
 
       <h2 className="text-2xl font-semibold mb-4">回答者:</h2>
       {participants.length > 0 ? (

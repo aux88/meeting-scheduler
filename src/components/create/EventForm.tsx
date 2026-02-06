@@ -28,7 +28,7 @@ export const EventForm = ({
 }:EventFormProps) => {
     
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 max-w-2xl">
             <h1 className="text-2xl font-bold mb-4">新しいイベントを作成</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <EventInfoFields

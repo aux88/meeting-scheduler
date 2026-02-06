@@ -8,6 +8,8 @@ import { AvailabilitiesForm } from "../components/event/AvailabilitiesForm";
 import { fetchEventDetail } from "../services/eventService";
 import { insertParticipant } from "../services/participantService";
 import { insertAvailabilities } from "../services/availabilitiesService";
+import { ShareLinkSection } from "../components/common/ShareLinkSection";
+import { ShareLinkItem } from "../components/common/ShareLinkItem";
 
 const EventDetailPage = () => {
     const { eventId } = useParams<{ eventId: string }>();
@@ -94,6 +96,9 @@ const EventDetailPage = () => {
     return (
         <div className="container mx-auto p-4 max-w-2xl">
             <EventHeader title={event.title} description={event.description} duration_minutes={event.duration_minutes} />
+            <ShareLinkSection>
+                <ShareLinkItem label="このリンクを参加者に共有してください" eventId={eventId as string}/>
+            </ShareLinkSection>
             <AvailabilitiesForm 
                 onSubmit = {handleSubmit}
                 onChangeAvailabilities= {changeAvailabilities}
