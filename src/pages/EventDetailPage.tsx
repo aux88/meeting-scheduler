@@ -33,9 +33,11 @@ const EventDetailPage = () => {
 
                 // Initialize availabilities state
                 setAvailabilities(candidates.map(c => ({
+                    id: undefined,
+                    participant_id: undefined,
                     candidate_id: c.id,
-                    start_time: "",
-                    end_time: "",
+                    available_start: "",
+                    available_end: "",
                 })));
 
             } catch (err) {
@@ -62,7 +64,7 @@ const EventDetailPage = () => {
             const participantId = participantData.id;
 
             // 2. Filter and insert availabilities
-            const validAvailabilities = availabilitiesForm.availabilities.filter(a => a.start_time && a.end_time);
+            const validAvailabilities = availabilitiesForm.availabilities.filter(a => a.available_start && a.available_end);
             
             if (validAvailabilities.length === 0) {
                 // Navigate to result page even if no times are submitted

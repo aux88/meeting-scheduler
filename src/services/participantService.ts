@@ -17,3 +17,13 @@ export const insertParticipant = async(eventId: string, participantName: string)
     return participantData;
 }
 
+export const fetchParticipants = async(eventId: string):Promise<Participant[]> =>{
+    const { data: participantsData, error: participantsError } = await supabase
+        .from("participants")
+        .select("*")
+        .eq("event_id", eventId);
+
+    if (participantsError) throw participantsError;
+    
+    return participantsData;
+}

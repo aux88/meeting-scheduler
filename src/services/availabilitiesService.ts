@@ -1,5 +1,6 @@
 import { supabase } from "../lib/supabaseClient";
 import type { Availability } from "../types/Availability";
+import type { Candidate } from "../types/Candidate";
 import { getLocalTimezoneOffset } from "../utils/time";
 
 export const insertAvailabilities = async ( participantId :string, availabilities :Availability[]) => {
@@ -8,8 +9,8 @@ export const insertAvailabilities = async ( participantId :string, availabilitie
         return supabase.from("participant_availabilities").insert({
             participant_id: participantId,
             candidate_id: avail.candidate_id,
-            available_start: `${avail.start_time}:00${timezoneOffset}`,
-            available_end: `${avail.end_time}:00${timezoneOffset}`,
+            available_start: `${avail.available_start}:00${timezoneOffset}`,
+            available_end: `${avail.available_end}:00${timezoneOffset}`,
         });
     });
 
@@ -22,3 +23,13 @@ export const insertAvailabilities = async ( participantId :string, availabilitie
     }
 }
 
+export const fetchAvailabilities = async (candidates: Candidate[]):Promise<Availability[]> =>{
+    const candidateIds = candidates.map((c) => c.id);
+        const { data: availabilitiesData, error: availabilitiesError } = await supabase
+            .from("participant_availabilities")
+            .select("*")
+            .in("candidate_id", candidateIds);
+        
+        if (availabilitiesError) throw availabilitiesError;
+        return availabilitiesData;
+}
