@@ -38,7 +38,7 @@ export const CandidateItem = ({index, candidate, onChange, onDelete }:CandidateI
                 <input
                     type="time"
                     value={candidate.start_time}
-                    onChange={(e) => onChange(index, "startTime", e.target.value)}
+                    onChange={(e) => onChange(index, "start_time", e.target.value)}
                     className="input input-bordered w-full"
                     required
                 />
@@ -50,7 +50,7 @@ export const CandidateItem = ({index, candidate, onChange, onDelete }:CandidateI
                 <input
                     type="time"
                     value={candidate.end_time}
-                    onChange={(e) => onChange(index, "endTime", e.target.value)}
+                    onChange={(e) => onChange(index, "end_time", e.target.value)}
                     className="input input-bordered w-full"
                     required
                 />

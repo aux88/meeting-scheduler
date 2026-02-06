@@ -5,7 +5,7 @@ import { ParticipantNameInput } from "./ParticipantNameInput";
 interface AvailabilitiesFormProps { 
     onSubmit : (e: React.FormEvent<Element>)=> void;
     onChangeParticipantName : (name : string)=> void;
-    onChangeAvailabilities : (candidateId: string, field: "start_time" | "end_time", value: string)=> void;
+    onChangeAvailabilities : (candidateId: string, field: "available_start" | "available_end", value: string)=> void;
     participantName :string;
     candidates: Candidate[];
 }

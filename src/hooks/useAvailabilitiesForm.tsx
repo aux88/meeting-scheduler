@@ -8,7 +8,7 @@ type Action = | {
 }|{
     type: `changeAvailabilities`;
     candidateId: string;
-    field: "start_time" | "end_time";
+    field: "available_start" | "available_end";
     value: string;
 }|{
     type: `setAvailabilities`;
@@ -44,7 +44,7 @@ export const useAvailabilitiesForm = () =>{
     const changeParticipantName = (value:string) =>{
         dispatch({type:'changeParticipant',newParticipantName:value})
     }
-    const changeAvailabilities = (candidateId: string, field: "start_time" | "end_time", value: string) =>{
+    const changeAvailabilities = (candidateId: string, field: "available_start" | "available_end", value: string) =>{
         dispatch({type:'changeAvailabilities',candidateId,field,value});
     }
     const setAvailabilities = (values:Availability[]) =>{

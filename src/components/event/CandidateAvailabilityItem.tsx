@@ -2,7 +2,7 @@ import type { Candidate } from "../../types/Candidate";
 
 interface CandidateAvailabilityItemProps {
     candidate: Candidate;
-    onChange: (id: string, field: 'start_time' | 'end_time', value: string) =>void;
+    onChange: (id: string, field: "available_start" | "available_end", value: string) =>void;
 }
 
 export const CandidateAvailabilityItem = ({candidate, onChange}:CandidateAvailabilityItemProps) => {
@@ -19,7 +19,7 @@ export const CandidateAvailabilityItem = ({candidate, onChange}:CandidateAvailab
                     </label>
                     <input
                         type="time"
-                        onChange={(e) => onChange(candidate.id, 'start_time', e.target.value)}
+                        onChange={(e) => onChange(candidate.id, 'available_start', e.target.value)}
                         className="input input-bordered w-full"
                     />
                 </div>
@@ -29,7 +29,7 @@ export const CandidateAvailabilityItem = ({candidate, onChange}:CandidateAvailab
                     </label>
                     <input
                         type="time"
-                        onChange={(e) => onChange(candidate.id, 'end_time', e.target.value)}
+                        onChange={(e) => onChange(candidate.id, 'available_end', e.target.value)}
                         className="input input-bordered w-full"
                     />
                 </div>

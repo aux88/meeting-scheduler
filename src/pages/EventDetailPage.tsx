@@ -64,10 +64,15 @@ const EventDetailPage = () => {
             // 1. Insert participant
             const participantData = await insertParticipant(eventId,availabilitiesForm.participantName); 
             const participantId = participantData.id;
-
+            console.log(participantData.name);
             // 2. Filter and insert availabilities
+            console.log(availabilitiesForm.availabilities);
+            console.log(availabilitiesForm.availabilities[0].available_start);
+            console.log(availabilitiesForm.availabilities[0].available_end);
             const validAvailabilities = availabilitiesForm.availabilities.filter(a => a.available_start && a.available_end);
             
+            console.log(validAvailabilities);
+            console.log(validAvailabilities.length);
             if (validAvailabilities.length === 0) {
                 // Navigate to result page even if no times are submitted
                 navigate(`/result/${eventId}`);

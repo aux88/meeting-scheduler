@@ -47,7 +47,7 @@ export const ResultItem = ({candidate,participants,currentCandidateAvailabilitie
                 <ul className="list-disc pl-5 text-green-700">
                 {calculatedSlot.availableSlots.map((slot, index) => (
                     <li key={index}>
-                    {slot.start} - {slot.end} (所要時間:{" "}  
+                    {slot.start} - {slot.end} (調整可能範囲:{" "}  
                     {timeToMinutes(slot.end) - timeToMinutes(slot.start)} 分)
                     </li>
                 ))}

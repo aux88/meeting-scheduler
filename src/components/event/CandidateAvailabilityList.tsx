@@ -3,7 +3,7 @@ import { CandidateAvailabilityItem } from "./CandidateAvailabilityItem";
 
 interface CandidateAvailabilityListProps {
     candidates: Candidate[]
-    onChangeAvailabilities: (id: string, field: 'start_time' | 'end_time', value: string) =>void;
+    onChangeAvailabilities: (id: string, field: "available_start" | "available_end", value: string) =>void;
 }
 
 export const CandidateAvailabilityList = ({candidates,onChangeAvailabilities}:CandidateAvailabilityListProps) => {
