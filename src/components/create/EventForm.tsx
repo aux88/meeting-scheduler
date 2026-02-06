@@ -29,7 +29,7 @@ export const EventForm = ({
     
     return (
         <div className="container mx-auto p-4 max-w-2xl">
-            <h1 className="text-2xl font-bold mb-4">新しいイベントを作成</h1>
+            <h1 className="text-2xl font-bold mb-4">新しい予定を作成</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <EventInfoFields
                     eventInfo ={eventInfo}
@@ -45,7 +45,7 @@ export const EventForm = ({
 
                 <div className="mt-6">
                     <button type="submit" className="btn btn-primary w-full">
-                        イベントを作成
+                        予定を作成
                     </button>
                 </div>
             </form>

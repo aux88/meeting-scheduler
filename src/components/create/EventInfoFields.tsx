@@ -13,7 +13,7 @@ export const EventInfoFields = memo(({eventInfo, changeEventName, changeDescript
         <>
             <div>
                 <label className="label">
-                    <span className="label-text">イベント名</span>
+                    <span className="label-text">タイトル</span>
                 </label>
                 <input
                     type="text"
