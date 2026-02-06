@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import type { EventInfo } from "../types/EventInfo";
+import type { Event } from "../types/Event";
 
 type Action = |{
         type: `eventName`;
@@ -12,23 +12,23 @@ type Action = |{
         newDuration: number;
     };
 
-function reducer(state:EventInfo, action:Action) {
+function reducer(state:Event, action:Action) {
     switch (action.type) {
         case `eventName`:{
-            return {...state, eventName: action.newEventName};
+            return {...state, title: action.newEventName};
         }
         case `description`:{
             return {...state, description: action.newEventDescription};
         }
         case `duration`:{
-            return {...state, duration: action.newDuration};
+            return {...state, duration_minutes: action.newDuration};
         }
     }
 }
 
 export const useCreateEvenet = () => {
 
-    const initialEventInfo: EventInfo = {eventName:"",description:"",duration:30}
+    const initialEventInfo: Event = {id:undefined,title:"",description:"",duration_minutes:30}
     const [eventInfo, dispatch] = useReducer(reducer, initialEventInfo);
     const changeEventName = (newEventName:string) =>{
         dispatch({type:'eventName',newEventName:newEventName})

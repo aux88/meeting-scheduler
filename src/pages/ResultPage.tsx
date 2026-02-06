@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
 import { timeToMinutes, minutesToTime, getOverlap, mergeIntervals, formatDateToJapanese, formatTimeToJapanese } from "../utils/time";
-
-interface Event {
-  id: string;
-  title: string;
-  description: string;
-  duration_minutes: number;
-}
+import type { Event } from "../types/Event";
 
 interface EventCandidate {
   id: string;

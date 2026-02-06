@@ -1,8 +1,8 @@
 import { memo } from "react";
-import type { EventInfo } from "../../types/EventInfo";
+import type { Event } from "../../types/Event";
 
 interface EventInfoFieldsProps {
-    eventInfo: EventInfo;
+    eventInfo: Event;
     changeEventName: (value:string) => void;
     changeDescription: (value:string) => void;
     changeDuration: (value:number) => void;
@@ -17,7 +17,7 @@ export const EventInfoFields = memo(({eventInfo, changeEventName, changeDescript
                 </label>
                 <input
                     type="text"
-                    value={eventInfo.eventName}
+                    value={eventInfo.title}
                     onChange={(e)=>changeEventName(e.target.value)}
                     className="input input-bordered w-full"
                     required
@@ -39,7 +39,7 @@ export const EventInfoFields = memo(({eventInfo, changeEventName, changeDescript
                 </label>
                 <input
                     type="number"
-                    value={eventInfo.duration}
+                    value={eventInfo.duration_minutes}
                     onChange={(e)=>changeDuration(parseInt(e.target.value))}
                     className="input input-bordered w-full"
                     required

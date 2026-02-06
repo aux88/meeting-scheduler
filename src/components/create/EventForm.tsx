@@ -1,11 +1,11 @@
 import type { Candidate } from "../../types/Candidate";
-import type { EventInfo } from "../../types/EventInfo";
+import type { Event } from "../../types/Event";
 import { CandidateList } from "./CandidateList";
 import { EventInfoFields } from "./EventInfoFields";
 
 interface EventFormProps {
     handleSubmit: (e:React.FormEvent)=>void;
-    eventInfo: EventInfo;
+    eventInfo: Event;
     changeEventName: (value: string)=>void;
     changeDescription: (value: string)=>void;
     changeDuration: (value: number)=>void;

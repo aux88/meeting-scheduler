@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useCandidate } from "../hooks/useCandidate";
 import { useCreateEvenet } from "../hooks/useCreateEvent";
-import { EventForm } from "../components/event/EventForm"
+import { EventForm } from "../components/create/EventForm"
 import { createEvent } from "../services/eventService";
 
 const CreateEventPage = () => {

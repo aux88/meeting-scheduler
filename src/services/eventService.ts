@@ -1,17 +1,17 @@
 import { supabase } from "../lib/supabaseClient";
 import { getLocalTimezoneOffset } from "../utils/time";
-import type { EventInfo } from "../types/EventInfo";
+import type { Event } from "../types/Event";
 import type { Candidate } from "../types/Candidate";
 
-export const createEvent = async (eventInfo: EventInfo, candidates: Candidate[]): Promise<string> => {
+export const createEvent = async (eventInfo: Event, candidates: Candidate[]): Promise<string> => {
     try {
         // 1. Insert into events table
         const { data: eventData, error: eventError } = await supabase
             .from("events")
             .insert({
-                title: eventInfo.eventName,
+                title: eventInfo.title,
                 description: eventInfo.description,
-                duration_minutes: eventInfo.duration,
+                duration_minutes: eventInfo.duration_minutes,
             })
             .select()
             .single();
@@ -26,8 +26,8 @@ export const createEvent = async (eventInfo: EventInfo, candidates: Candidate[])
             return supabase.from("event_candidates").insert({
                 event_id: eventId,
                 date: candidate.date,
-                start_time: `${candidate.startTime}:00${timezoneOffset}`,
-                end_time: `${candidate.endTime}:00${timezoneOffset}`,
+                start_time: `${candidate.start_time}:00${timezoneOffset}`,
+                end_time: `${candidate.end_time}:00${timezoneOffset}`,
             });
         });
 
@@ -48,3 +48,29 @@ export const createEvent = async (eventInfo: EventInfo, candidates: Candidate[])
         throw new Error("イベントの作成に失敗しました: " + error.message);
     }
 };
+
+export const fetchEventDetail = async (eventId: string):Promise<{event:Event,candidates:Candidate[]}> => {
+    // Fetch event details
+    const { data: eventData, error: eventError } = await supabase
+        .from("events")
+        .select("*")
+        .eq("id", eventId)
+        .single();
+
+    if (eventError) throw new Error(`イベントの取得に失敗しました: ${eventError.message}`);
+    
+    // Fetch event candidates
+    const { data: candidateData, error: candidateError } = await supabase
+        .from("event_candidates")
+        .select("*")
+        .eq("event_id", eventId)
+        .order("date", { ascending: true })
+        .order("start_time", { ascending: true });
+
+    if (candidateError) throw new Error(`候補日程の取得に失敗しました: ${candidateError.message}`);
+                
+    return {
+        event: eventData,
+        candidates: candidateData,
+    }
+}

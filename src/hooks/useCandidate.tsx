@@ -2,12 +2,12 @@ import { useCallback, useState } from "react";
 import type { Candidate } from "../types/Candidate";
 
 export const useCandidate = () => {
-    const [candidates, setCandidates] = useState<Candidate[]>([{ id: crypto.randomUUID(), date: "", startTime: "", endTime: "" }]);
+    const [candidates, setCandidates] = useState<Candidate[]>([{ id: crypto.randomUUID(), date: "", start_time: "", end_time: "", event_id: undefined }]);
 
     const addCandidate = useCallback(() => {
         setCandidates((prev) => [
         ...prev,
-        { id: crypto.randomUUID(), date: "", startTime: "", endTime: "" }
+        { id: crypto.randomUUID(), date: "", start_time: "", end_time: "", event_id: undefined }
         ]);
     },[]);
 

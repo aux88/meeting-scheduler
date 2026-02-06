@@ -1,6 +1,7 @@
 export type Candidate = {
     id: string;
     date: string;
-    startTime: string;
-    endTime: string;
+    event_id: string | undefined;
+    start_time: string;
+    end_time: string;
 };
